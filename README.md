@@ -1,1 +1,8 @@
 # TheGamingRoomCS230
+Client: The Gaming Room, owners of the party/guessing game Draw It or Lose It.
+Ask: Design a web-based, multi-platform version that multiple teams and players can join from browsers.
+I nailed the entities and their constraints, compared Linux/Windows/macOS and deployment targets against TGR’s needs (cost, security, tooling, ops), and justified a stateless, horizontally scalable web tier.
+UML (class, sequence, state) became a blueprint for controllers and clarified where to keep server vs. client.
+One part that I would choose to improve on this would be the security aspect of the code. By implementing API tokens instead of Basic Auth, the security of the game would protect admin actions, stop room-name scraping, and prevent replay of “join” and “guess” requests.
+“Anyone should be able to join fast from different devices.” The game must feel fair and responsive with multiple teams. For this, a responsive UI and minimal payloads are necessary. All scoring, timers, and round transitions happen on the server; clients are views/controllers only. User needs matter as they determine success criteria. Especially when one gets them early prevented gold-plating features players never asked for. 
+My approach was API-first and domain-driven. I defined response contracts and error shapes up front, modeled the core entities, and used targeted UML to nail tricky flows like join, round, and guess. I kept the architecture with configuration via environment.Going forward, I pair this with clear user-story acceptance criteria, performance budgets, and a small security test plan to keep fairness, latency, and scalability on track.
